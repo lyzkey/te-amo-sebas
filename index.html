@@ -3,99 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Te amo, Sebastián 💖</title>
+  <title>Sebas, te amo</title>
   <style>
-    body {
+    * {
       margin: 0;
-      background-color: #000;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    h1 {
-      font-size: 3em;
-      margin-top: 20px;
-      animation: fadeIn 2s ease-in-out;
+    body {
+      background-color: #000;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    #start-screen {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 2;
+    }
+
+    #start-button {
+      padding: 1em 2em;
+      font-size: 1.2em;
+      background-color: #ff4d6d;
+      border: none;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .message {
+      font-size: 2.5em;
+      z-index: 1;
+      animation: fadeIn 3s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     .heart {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      width: 200px;
-      height: 200px;
-      background-color: red;
-      transform: rotate(-45deg);
-      animation: beat 1.5s infinite;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
     }
 
     .heart:before,
     .heart:after {
       content: "";
       position: absolute;
-      width: 200px;
-      height: 200px;
-      background-color: red;
+      width: 10px;
+      height: 10px;
+      background: pink;
       border-radius: 50%;
     }
 
     .heart:before {
-      top: -100px;
+      top: -5px;
       left: 0;
     }
 
     .heart:after {
+      left: 5px;
       top: 0;
-      left: 100px;
     }
 
-    @keyframes beat {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
       }
-      50% {
-        transform: translate(-50%, -50%) scale(1.1);
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
       }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .teamo {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2em;
-      color: pink;
-      animation: fadeIn 3s ease-in-out;
-    }
-
-    .i-love-you {
-      position: absolute;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5em;
-      opacity: 0.5;
     }
   </style>
 </head>
 <body>
-  <div class="i-love-you">Te amo · I love you · Je t’aime · Ich liebe dich · Ti amo</div>
-  <h1>Sebas, te amo 💘</h1>
-  <div class="heart"></div>
-  <div class="teamo">Para siempre contigo 💞</div>
 
-  <!-- Música de fondo -->
-  <audio autoplay loop>
-    <source src="https://dl.dropboxusercontent.com/scl/fi/jnn2u3i1rpckhnc9of3p7/Roslyn.mp3?rlkey=85pbb0o4hrwt1p33z5ujldvts&dl=0" type="audio/mpeg">
-    Tu navegador no soporta el audio :(
-  </audio>
+<div id="start-screen">
+  <button id="start-button">Aprieta aquí mi niño 💌</button>
+</div>
+
+<div class="message" id="main-message">Sebas, te amo 💖</div>
+
+<audio id="bg-music" loop>
+  <source src="https://dl.dropboxusercontent.com/scl/fi/jnn2u3i1rpckhnc9of3p7/Roslyn.mp3?rlkey=85pbb0o4hrwt1p33z5ujldvts&dl=0" type="audio/mpeg">
+</audio>
+
+<script>
+  const startBtn = document.getElementById("start-button");
+  const startScreen = document.getElementById("start-screen");
+  const message = document.getElementById("main-message");
+  const music = document.getElementById("bg-music");
+
+  startBtn.addEventListener("click", () => {
+    startScreen.style.display = "none";
+    message.style.opacity = "1";
+    music.play();
+    createHearts();
+  });
+
+  function createHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 200);
+  }
+</script>
+
 </body>
 </html>
