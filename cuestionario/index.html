@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¿Quién ama más?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #000000, #1a1a1a);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 2em;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background-color: #ff4d6d;
+      border: none;
+      padding: 1em 2em;
+      border-radius: 12px;
+      font-size: 1.2em;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Quién amas más de los dos?</h1>
+  <div class="buttons">
+    <button id="tuMasBtn">Tu más</button>
+    <button id="yoMasBtn">Yo más</button>
+  </div>
+
+  <script>
+    const tuMasBtn = document.getElementById("tuMasBtn");
+    const yoMasBtn = document.getElementById("yoMasBtn");
+
+    const frases = [
+      "Nono yo mash",
+      "yo mucho máss",
+      "yo mucho mucho mass",
+      "MUSCHISISISISIMO más :b",
+      "yo más q tú",
+      "más que infinito",
+      "yo el triple mash 😤",
+      "yo y punto final"
+    ];
+
+    let index = 0;
+
+    yoMasBtn.addEventListener("click", () => {
+      tuMasBtn.textContent = frases[index];
+      index = (index + 1) % frases.length;
+    });
+  </script>
+
+</body>
+</html>
