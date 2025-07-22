@@ -3,84 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Te amo Sebas 💖</title>
+  <title>Te amo, Sebastián 💖</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: black;
+      background-color: #000;
       color: white;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 3em;
-      margin-bottom: 20px;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .heart {
-      position: relative;
-      width: 100px;
-      height: 90px;
-      background: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 200px;
+      height: 200px;
+      background-color: red;
       transform: rotate(-45deg);
-      animation: heartbeat 1s infinite;
+      animation: beat 1.5s infinite;
     }
 
-    .heart::before,
-    .heart::after {
+    .heart:before,
+    .heart:after {
       content: "";
       position: absolute;
-      width: 100px;
-      height: 90px;
-      background: red;
+      width: 200px;
+      height: 200px;
+      background-color: red;
       border-radius: 50%;
     }
 
-    .heart::before {
-      top: -50px;
+    .heart:before {
+      top: -100px;
       left: 0;
     }
 
-    .heart::after {
-      left: 50px;
+    .heart:after {
       top: 0;
+      left: 100px;
     }
 
-    @keyframes heartbeat {
-      0% {
-        transform: scale(1) rotate(-45deg);
+    @keyframes beat {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
       }
       50% {
-        transform: scale(1.2) rotate(-45deg);
-      }
-      100% {
-        transform: scale(1) rotate(-45deg);
+        transform: translate(-50%, -50%) scale(1.1);
       }
     }
 
-    .message {
-      margin-top: 30px;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .teamo {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2em;
+      color: pink;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .i-love-you {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 1.5em;
-    }
-
-    iframe {
-      display: none;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
-  <h1>Sebas, te amo 💕</h1>
+  <div class="i-love-you">Te amo · I love you · Je t’aime · Ich liebe dich · Ti amo</div>
+  <h1>Sebas, te amo 💘</h1>
   <div class="heart"></div>
-  <div class="message">Con esta canción, siempre tú y yo 💫</div>
+  <div class="teamo">Para siempre contigo 💞</div>
 
-  <!-- Audio de Roslyn (Twilight) en bucle -->
-  <iframe width="0" height="0" src="https://www.youtube.com/embed/9zxd-3aGA2U?autoplay=1&loop=1&playlist=9zxd-3aGA2U" frameborder="0" allow="autoplay"></iframe>
+  <!-- Música de fondo -->
+  <audio autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/jnn2u3i1rpckhnc9of3p7/Roslyn.mp3?rlkey=85pbb0o4hrwt1p33z5ujldvts&dl=0" type="audio/mpeg">
+    Tu navegador no soporta el audio :(
+  </audio>
 </body>
 </html>
