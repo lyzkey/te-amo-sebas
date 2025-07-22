@@ -2,11 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Te amo Sebas 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 90px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: heartbeat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1) rotate(-45deg);
+      }
+      50% {
+        transform: scale(1.2) rotate(-45deg);
+      }
+      100% {
+        transform: scale(1) rotate(-45deg);
+      }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+
+    iframe {
+      display: none;
+    }
+  </style>
 </head>
-<body style="background-color: pink; text-align: center; font-family: sans-serif; padding-top: 50px;">
-  <h1>Hola Sebas 💘</h1>
-  <p>Esta página es solo para ti, con mucho amor.</p>
+<body>
+  <h1>Sebas, te amo 💕</h1>
+  <div class="heart"></div>
+  <div class="message">Con esta canción, siempre tú y yo 💫</div>
+
+  <!-- Audio de Roslyn (Twilight) en bucle -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/9zxd-3aGA2U?autoplay=1&loop=1&playlist=9zxd-3aGA2U" frameborder="0" allow="autoplay"></iframe>
 </body>
 </html>
