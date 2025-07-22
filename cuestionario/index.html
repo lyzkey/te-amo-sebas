@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>¿Quién ama más?</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(120deg, #000000, #1a1a1a);
+      background-color: #111;
       color: white;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Comic Sans MS', cursive;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      margin: 0;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 2em;
-      margin-bottom: 2em;
+      font-size: 2.5em;
+      margin-bottom: 40px;
     }
 
-    .buttons {
+    .botones {
+      position: relative;
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
-      background-color: #ff4d6d;
-      border: none;
-      padding: 1em 2em;
-      border-radius: 12px;
+      padding: 15px 30px;
       font-size: 1.2em;
+      border: none;
+      border-radius: 12px;
+      background-color: #ff5e7e;
       color: white;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: all 0.4s ease;
+      z-index: 1;
     }
 
-    button:hover {
-      transform: scale(1.1);
+    #btnTu {
+      position: relative;
+      z-index: 2;
+    }
+
+    #btnYo {
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
 
   <h1>¿Quién ama más de los dos?</h1>
-  <div class="buttons">
-    <button id="tuMasBtn">Tu más</button>
-    <button id="yoMasBtn">Yo más</button>
+
+  <div class="botones">
+    <button id="btnTu">Tu más</button>
+    <button id="btnYo">Yo más</button>
   </div>
 
   <script>
-    const tuMasBtn = document.getElementById("tuMasBtn");
-    const yoMasBtn = document.getElementById("yoMasBtn");
+    const btnTu = document.getElementById('btnTu');
+    const btnYo = document.getElementById('btnYo');
 
     const frases = [
       "Nono yo mash",
       "yo mucho máss",
       "yo mucho mucho mass",
-      "MUSCHISISISISIMO más :b",
-      "yo más q tú",
-      "más que infinito",
-      "yo el triple mash 😤",
-      "yo y punto final"
+      "MUSCHISISISISIMO más :b"
     ];
 
     let index = 0;
+    let width = 150;
+    let height = 60;
 
-    yoMasBtn.addEventListener("click", () => {
-      tuMasBtn.textContent = frases[index];
-      index = (index + 1) % frases.length;
+    btnYo.addEventListener('click', () => {
+      if (index < frases.length) {
+        btnTu.textContent = frases[index];
+        width += 100;
+        height += 30;
+        btnTu.style.width = width + 'px';
+        btnTu.style.height = height + 'px';
+        btnTu.style.fontSize = (1.2 + index * 0.3) + 'em';
+        index++;
+      } else {
+        // Que se vuelva ENORME para tapar al otro botón
+        btnTu.textContent = "YA GANÉ";
+        btnTu.style.width = '100vw';
+        btnTu.style.height = '100vh';
+        btnTu.style.fontSize = '3em';
+        btnTu.style.position = 'absolute';
+        btnTu.style.top = '0';
+        btnTu.style.left = '0';
+        btnTu.style.borderRadius = '0';
+        btnTu.style.zIndex = '999';
+      }
     });
   </script>
 
